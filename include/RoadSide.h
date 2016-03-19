@@ -1,6 +1,7 @@
 #pragma once
 
-enum class RoadSide {
+enum class RoadSide 
+{
 	UP,
 	RIGHT,
 	DOWN

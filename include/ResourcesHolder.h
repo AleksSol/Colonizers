@@ -4,7 +4,8 @@
 #include <cstddef>
 #include <vector>
 	
-class ResourcesHolder {
+class ResourcesHolder 
+{
 	std::vector <std::pair<Resource, size_t>>  _resources;
 public:
 	ResourcesHolder();

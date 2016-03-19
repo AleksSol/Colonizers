@@ -2,6 +2,7 @@
 #include "RoadSide.h"
 #include "Resource.h"
 #include "ResourcesHolder.h"
+#include "Hex.h"
 #include <iostream>
 using namespace std;
 

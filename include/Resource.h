@@ -1,6 +1,7 @@
 #pragma once
 
-enum class Resource {
+enum class Resource 
+{
 	 GRAIN, 
 	 CLAY, 
 	 ORE, 

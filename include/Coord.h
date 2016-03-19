@@ -1,6 +1,7 @@
 #pragma once
 
-class Coord {
+class Coord 
+{
 public:
 	Coord();
 	Coord(int x, int y);

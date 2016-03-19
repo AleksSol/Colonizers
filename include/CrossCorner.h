@@ -1,6 +1,7 @@
 #pragma once
 
-enum class CrossCorner {
+enum class CrossCorner 
+{
 	TOP,
 	BOTTOM
 };

@@ -1,0 +1,25 @@
+#include "Coord.h"
+
+Coord::Coord() 
+{
+	_x = 0;
+	_y = 0;
+}
+Coord::Coord(int x, int y) 
+	: _x(x), _y(y)
+{
+}
+
+int Coord::x() const
+{
+	return _x;
+}
+int Coord::y() const 
+{
+	return _y;
+}
+void Coord::change(int x, int y) 
+{
+	_x = x;
+	_y = y;
+}

@@ -8,15 +8,18 @@
 #include "Road.h"
 #include "Town.h"
 #include "City.h"
+#include "Player.h"
 #include <iostream>
 using namespace std;
 
 
 int main() {
-	ResourcesHolder A;
-	A.add(Resource::ORE, 5);
-	A.remove(Resource::ORE, 2);
-	A.add(Resource::WOOD, 5);
-	A.add(Resource::WOOL, 5);
-	cout << A.resources() << endl;
+	Player A("AleksSol");
+	Player C("AleksisSol");
+	cout << A.name()<<endl;
+	Road &X =A.add_road("MY_ROAD");
+	C.add_road("HIS_ROAD");
+	if(X.is_town()) cout << "TOWN ADD" << endl;
+	if(X.is_road()) cout << "ROAD ADD" << endl;
+	return 0;
 }

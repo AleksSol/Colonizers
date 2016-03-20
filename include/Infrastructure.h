@@ -13,5 +13,5 @@ public:
 	virtual bool is_town() const noexcept = 0;			//– является ли Infrastructure поселением; будет переопределяться в каждом из классов-потомков
 	virtual bool is_city() const noexcept = 0; 			//– является ли Infrastructure городом; будет переопределяться в каждом из классов-потомков
 	virtual bool is_road() const noexcept = 0; 			//– является ли Infrastructure дор`огой; будет переопределяться в каждом из классов-потомков 
-
+	virtual ~Infrastructure(){}
 };

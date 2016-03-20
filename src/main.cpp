@@ -9,6 +9,7 @@
 #include "Town.h"
 #include "City.h"
 #include "Player.h"
+#include "Field.h"
 #include <iostream>
 using namespace std;
 
@@ -23,5 +24,18 @@ int main() {
 	A.remove_road(A.road(0));
 	cout << A.num_roads()<<endl;
 	cout<<A.road(0).name() << endl;*/
+	
+	/*Player C("AleksSol");
+	Field A;
+	City B("My_city", C);
+	A.link_locality(B, Coord(1,1), CrossCorner::BOTTOM);
+	
+	if(A.has_locality(Coord(1,1), CrossCorner::BOTTOM)) cout << "lol" << endl;
+	if(!A.has_locality(Coord(1,1), CrossCorner::BOTTOM)) cout << "unlol" << endl;
+	cout << A.locality(Coord(1,1), CrossCorner::BOTTOM).name() << endl;
+	A.unlink_locality(Coord(1,1), CrossCorner::BOTTOM);
+	if(A.has_locality(Coord(1,1), CrossCorner::BOTTOM)) cout << "lol" << endl;
+	if(!A.has_locality(Coord(1,1), CrossCorner::BOTTOM)) cout << "unlol" << endl;
+	* */
 	return 0;
 }

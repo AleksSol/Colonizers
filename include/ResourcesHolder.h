@@ -7,6 +7,8 @@
 class ResourcesHolder 
 {
 	std::map <Resource, size_t>  _resources;
+	ResourcesHolder (const ResourcesHolder &) = delete;
+	ResourcesHolder &operator= (const ResourcesHolder &) = delete;
 public:
 	ResourcesHolder();
 	void add(Resource r, size_t n) noexcept;

@@ -9,6 +9,8 @@ class Hex
 	Resource _resource;
 	bool _has_number;
 	size_t _number;
+	Hex (const Hex &) = delete;
+	Hex &operator= (const Hex &) = delete;
 public:
 	Hex();
 	void set_number(size_t n); 				//– поставить номерной жетон с номером n, если жетона нет на гексе, иначе сгенерировать исключение std::logic_error с непустым информативным сообщением

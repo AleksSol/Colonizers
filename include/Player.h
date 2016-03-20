@@ -15,6 +15,8 @@ class Player
 	std::string _name;
 	std::unique_ptr<ResourcesHolder> _bank;
 	std::vector < std::unique_ptr<Infrastructure> > _infrastructures;
+	Player (const Player &) = delete;
+	Player &operator= (const Player &) = delete;
 public:
 	Player(const std::string &name); 					//– создает игрока с именем name c пустыми наборами ресурсов и объектов инфраструктуры, не привязанных к полю
 	~Player(); 											//– удаляет игрока и его объекты инфраструктуры 

@@ -8,6 +8,8 @@ class Game
 {
 	std::unique_ptr<Field> _field;
 	std::vector<std::unique_ptr<Player>> _players;
+	Game (const Game &) = delete;
+	Game &operator= (const Game &) = delete;
 public:
 	Game(); 										//– создает объект поля без обьектов игроков
 	~Game(); 										//- удаляет объект поля и объекты игроков

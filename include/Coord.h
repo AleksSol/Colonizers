@@ -10,8 +10,6 @@ public:
 	void change(int x, int y);
 	bool operator==(Coord b);
 private:
-	//Coord (const Coord &) = delete;
-	//Coord &operator= (const Coord &) = delete;
 	int _x;
 	int _y;
 };

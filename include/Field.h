@@ -18,6 +18,8 @@ class Field
 	std::map <Coord, std::unique_ptr<Hex>> _hex;
 	std::map<std::pair<Coord, CrossCorner>, Locality *> _locality;
 	std::map<std::pair<Coord, RoadSide>, Road *> _road;
+	Field (const Field &) = delete;
+	Field &operator= (const Field &) = delete;
 public:
 	Field();										 					//– создает пустой банк ресурсов, гексов на поле нет
 	~Field(); 															//- удаляет банк ресурсов и объекты гексов

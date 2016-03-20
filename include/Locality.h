@@ -3,6 +3,8 @@
 
 class Locality : public Infrastructure 
 {
+	Locality (const Locality &) = delete;
+	Locality &operator= (const Locality &) = delete;
 public:
 	Locality(const std::string &name, Player &player) : Infrastructure(name, player) {}
 	virtual bool is_town() const noexcept override

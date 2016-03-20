@@ -6,6 +6,8 @@ class Player;
 class Infrastructure {
 	Player &_player;
 	std::string _name;
+	Infrastructure (const Infrastructure &) = delete;
+	Infrastructure &operator= (const Infrastructure &) = delete;
 public:
 	Infrastructure(const std::string &name, Player &); 	//– запоминает, что этот объект имеет указанное название и создан указанным игроком; игрок хранится вне объекта класса Infrastructure, название хранится в объекте класса Infrastructure
 	Player &player() const noexcept; 					//– получить игрока, которому принадлежит данный объект

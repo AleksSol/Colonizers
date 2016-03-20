@@ -14,7 +14,7 @@ const std::string &Player::name() const noexcept
 }		
 ResourcesHolder &Player::bank() const noexcept
 {
-	return *(_bank.get());
+	return *_bank;
 } 			
 Road &Player::add_road(const std::string &name)
 {

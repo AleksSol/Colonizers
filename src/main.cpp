@@ -14,12 +14,14 @@ using namespace std;
 
 
 int main() {
-	Player A("AleksSol");
+	/*Player A("AleksSol");
 	Player C("AleksisSol");
 	cout << A.name()<<endl;
-	Road &X =A.add_road("MY_ROAD");
-	C.add_road("HIS_ROAD");
-	if(X.is_town()) cout << "TOWN ADD" << endl;
-	if(X.is_road()) cout << "ROAD ADD" << endl;
+	A.add_road("MY_ROAD");
+	A.add_road("HIS_ROAD");
+	cout << A.num_roads()<<endl;
+	A.remove_road(A.road(0));
+	cout << A.num_roads()<<endl;
+	cout<<A.road(0).name() << endl;*/
 	return 0;
 }

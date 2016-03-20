@@ -6,47 +6,30 @@ ResourcesHolder:: ResourcesHolder() : _resources()
 
 void ResourcesHolder:: add(Resource r, size_t n) noexcept
 {
-	for(auto it = _resources.begin(); it != _resources.end(); it++) {
-		if((size_t) it->first == (size_t) r) {
-			it->second += n;
-			return;
-		}
-	}
-	_resources.push_back(std::make_pair(r, n));
+	_resources[r]+=n;
 }
 
 void ResourcesHolder:: remove(Resource r, size_t n)
 {
-	for(auto it = _resources.begin(); it != _resources.end(); it++) {
-		if((size_t) it->first == (size_t) r) {
-			if(it->second < n) {
-				throw std::logic_error("Not enought resources!\n");
-			} 
-			it->second -= n;
-			return;
-		}
-	}
-	if(n != 0) {
+	if(_resources[r] < n) {
 		throw std::logic_error("Not enought resources!\n");
 	}
+	_resources[r] -= n;
 }
 
-size_t ResourcesHolder:: resources(Resource r) const noexcept
+size_t ResourcesHolder::resources(Resource r) const noexcept
 {
-	for(auto it = _resources.begin(); it != _resources.end(); it++) {
-		if((size_t) it->first == (size_t) r) {
-			return it->second;
-		}
+	if(_resources.find(r) == _resources.end()) {
+		return 0;
 	}
-	return 0;
+	return (const size_t)_resources.at(r);
 }
 
 size_t ResourcesHolder:: resources() const noexcept
 {
-	size_t res_size = 0;
-	for(auto &it: _resources)  {
+	int res_size = 0;
+	for(auto &it : _resources) {
 		res_size += it.second;
 	}
 	return res_size;
-	return 0;
 }

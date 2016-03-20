@@ -2,11 +2,11 @@
 #include <stdexcept>
 #include "Resource.h"
 #include <cstddef>
-#include <vector>
+#include <map>
 	
 class ResourcesHolder 
 {
-	std::vector <std::pair<Resource, size_t>>  _resources;
+	std::map <Resource, size_t>  _resources;
 public:
 	ResourcesHolder();
 	void add(Resource r, size_t n) noexcept;

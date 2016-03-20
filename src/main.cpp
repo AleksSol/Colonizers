@@ -3,6 +3,11 @@
 #include "Resource.h"
 #include "ResourcesHolder.h"
 #include "Hex.h"
+#include "Infrastructure.h"
+#include "Locality.h"
+#include "Road.h"
+#include "Town.h"
+#include "City.h"
 #include <iostream>
 using namespace std;
 

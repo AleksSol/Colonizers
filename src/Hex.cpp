@@ -1,5 +1,4 @@
 #include "Hex.h"
-#include <stdexcept>
 
 Hex::Hex() :  _has_resource(false), _has_number(false)
 {

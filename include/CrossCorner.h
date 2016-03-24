@@ -2,6 +2,6 @@
 
 enum class CrossCorner 
 {
-	TOP,
-	BOTTOM
+    TOP,
+    BOTTOM
 };

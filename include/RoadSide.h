@@ -2,7 +2,7 @@
 
 enum class RoadSide 
 {
-	UP,
-	RIGHT,
-	DOWN
+    UP,
+    RIGHT,
+    DOWN
 };

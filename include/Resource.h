@@ -2,9 +2,9 @@
 
 enum class Resource 
 {
-	 GRAIN, 
-	 CLAY, 
-	 ORE, 
-	 WOOL, 
-	 WOOD
+     GRAIN, 
+     CLAY, 
+     ORE, 
+     WOOL, 
+     WOOD
 };

@@ -1,16 +1,16 @@
 #include "Infrastructure.h"
 
 Infrastructure::Infrastructure(const std::string &name, Player &player)
-	: _player(player),  _name(name) 
+    : _player(player),  _name(name) 
 {
 }
 
 Player &Infrastructure::player() const noexcept
 {
-	return _player;
+    return _player;
 }
 
 const std::string &Infrastructure::name() const noexcept
 {
-	return _name;
-}		
+    return _name;
+}       

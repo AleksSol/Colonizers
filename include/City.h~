@@ -1,19 +1,19 @@
 #pragma once
 #include "Locality.h"
-
-class Town : public Locality
+ 
+class City : public Locality   
 {
-    Town (const Town &) = delete;
-    Town &operator= (const Town &) = delete;
+    City (const City &) = delete;
+    City &operator= (const City &) = delete;
 public:
-    Town(const std::string &name, Player &player) : Locality(name, player) {}
+    City(const std::string &name, Player &player) : Locality(name, player) {}
     virtual bool is_town() const noexcept override
     {
-        return true;
+        return false; 
     }           
     virtual bool is_city() const noexcept override 
     {
-        return false;
+        return true;
     }       
     virtual bool is_road() const noexcept override 
     {

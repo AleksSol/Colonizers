@@ -6,13 +6,13 @@ ResourcesHolder:: ResourcesHolder() : _resources()
 
 void ResourcesHolder:: add(Resource r, size_t n) noexcept
 {
-    _resources[r]+=n;
+    _resources[r]+=n; 
 }
 
 void ResourcesHolder:: remove(Resource r, size_t n)
 {
     if(_resources[r] < n) {
-        throw std::logic_error("Not enought resources!\n");
+        throw std::logic_error("Not enought resources!");
     }
     _resources[r] -= n;
 }

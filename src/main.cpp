@@ -76,9 +76,9 @@ void assert_infr(Player &p, size_t n)
 	catch (std::out_of_range out){}
 }
 
-void assert_pl(Player &p, size_t n, size_t t, size_t c, size_t r)
+void assert_pl(Player &p, size_t t, size_t c, size_t r)
 {
-	assert_infr(p, n);
+	assert_infr(p, t+r+c);
 	assert_roads(p, r);
 	assert_cities(p, c);
 	assert_towns(p,t);
@@ -97,40 +97,40 @@ int main() {
 	
 	Player &my_player = my_game.player(1);
 	//+1 -1
-	assert_pl(my_player, 0,0,0,0);
+	assert_pl(my_player, 0,0,0);
 	Road &my_road = my_player.add_road("R1");
-	assert_pl(my_player, 1,0,0,1);
+	assert_pl(my_player, 0,0,1);
 	my_player.remove_road(my_road);
-	assert_pl(my_player, 0,0,0,0);
+	assert_pl(my_player, 0,0,0);
 	
 	// +2 -2
 	Road &my_second_road = my_player.add_road("R1");
 	my_player.add_road("R1");
-	assert_pl(my_player, 2,0,0,2);
+	assert_pl(my_player, 0,0,2);
 	my_player.remove_road(my_second_road);
-	assert_pl(my_player, 1,0,0,1);
+	assert_pl(my_player, 0,0,1);
 	my_player.remove_road(my_player.road(0));
-	assert_pl(my_player, 0,0,0,0);
+	assert_pl(my_player, 0,0,0);
 	
 	//+3
 	my_player.add_road("R1");
 	my_player.add_road("R1");
 	my_player.add_road("R1");
-	assert_pl(my_player, 3,0,0,3);
+	assert_pl(my_player, 0,0,3);
 	
 	City &my_city = my_player.add_city("C");
-	assert_pl(my_player, 4,0,1,3);
+	assert_pl(my_player, 0,1,3);
 	my_player.remove_city(my_city);
-	assert_pl(my_player, 3,0,0,3);
+	assert_pl(my_player, 0,0,3);
 	my_player.add_city("C");
 	my_player.add_city("C");
-	assert_pl(my_player, 5,0,2,3);
+	assert_pl(my_player, 0,2,3);
 	my_player.remove_road(my_player.road(2));
-	assert_pl(my_player, 4,0,2,2);
+	assert_pl(my_player, 0,2,2);
 	my_player.remove_road(my_player.road(1));
-	assert_pl(my_player, 3,0,2,1);
+	assert_pl(my_player, 0,2,1);
 	my_player.remove_road(my_player.road(0));
-	assert_pl(my_player, 2,0,2,0);
+	assert_pl(my_player, 0,2,0);
 	
     return 0;
 }

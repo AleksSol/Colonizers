@@ -7,7 +7,7 @@ Hex::Hex() :  _has_resource(false), _has_number(false)
 void Hex::set_number(size_t n)
 {
     if(_has_number) {
-        throw std::logic_error("This Hex already have number!\n");
+        throw std::logic_error("This Hex already have number!");
     }
     _has_number = true;
     _number = n;
@@ -16,7 +16,7 @@ void Hex::set_number(size_t n)
 void Hex::unset_number() 
 {
     if(!_has_number) {
-        throw std::logic_error("This Hex haven't number!\n");
+        throw std::logic_error("This Hex haven't number!");
     }
     _has_number = false;
 }
@@ -29,7 +29,7 @@ bool Hex::has_number() const noexcept
 size_t Hex::number()const 
 {
     if(!_has_number) {
-        throw std::logic_error("This Hex haven't number!\n");
+        throw std::logic_error("This Hex haven't number!");
     }
     return _number;
 }
@@ -37,7 +37,7 @@ size_t Hex::number()const
 void Hex::set_resource(Resource r)
 {
     if(_has_resource) {
-        throw std::logic_error("This Hex is already produce resource!\n");
+        throw std::logic_error("This Hex is already produce resource!");
     }
     _has_resource = true;
     _resource = r;
@@ -46,7 +46,7 @@ void Hex::set_resource(Resource r)
 void Hex::unset_resource()
 {
     if(!_has_resource) {
-        throw std::logic_error("This Hex isn't produce resource!\n");
+        throw std::logic_error("This Hex isn't produce resource!");
     }
     _has_resource = false;
 } 
@@ -59,7 +59,7 @@ bool Hex::has_resource() const noexcept
 Resource Hex::resource() const 
 {
     if(!_has_resource) {
-        throw std::logic_error("This Hex isn't produce resource!\n");
+        throw std::logic_error("This Hex isn't produce resource!");
     }
     return _resource;
 }

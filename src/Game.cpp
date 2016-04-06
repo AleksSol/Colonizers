@@ -29,7 +29,7 @@ size_t Game::num_players() const noexcept
 Player &Game::player(size_t i) const
 {
     if (i + 1 > num_players() ) {
-        throw std::out_of_range("This game haven't enought players!\n");
+        throw std::out_of_range("This game haven't enought players!");
     }
     return *_players[i];
 }

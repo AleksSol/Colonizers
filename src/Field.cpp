@@ -1,7 +1,12 @@
 #include "Field.h"
 
 Field::Field()
-    : _is_robber(false), _robber(), _bank(std::unique_ptr<ResourcesHolder> (new ResourcesHolder())), _hex(), _locality(), _road()
+    : _is_robber(false), 
+    _robber(), 
+    _bank(std::unique_ptr<ResourcesHolder> (new ResourcesHolder())), 
+    _hex(), 
+    _locality(), 
+    _road()
 {
 }
 
@@ -17,7 +22,7 @@ ResourcesHolder &Field::bank() const noexcept
 Hex &Field::put_hex(Coord position)
 {
     if(has_hex(position)) {
-        throw std::logic_error("Hex at this pos alredy exist!\n");
+        throw std::logic_error("Hex at this pos alredy exist!");
     }
     Hex *new_hex = new Hex();
     _hex.insert(std::make_pair(position, std::unique_ptr<Hex>(new_hex)));
@@ -27,7 +32,7 @@ Hex &Field::put_hex(Coord position)
 void Field::remove_hex(Coord position)
 {
     if(!has_hex(position)) {
-        throw std::logic_error("Hex at this position isn't exist!\n");
+        throw std::logic_error("Hex at this position isn't exist!");
     }
     _hex.erase(_hex.find(position));
 }
@@ -35,7 +40,7 @@ void Field::remove_hex(Coord position)
 Hex &Field::hex(Coord pos) const 
 {
     if(!has_hex(pos)) {
-        throw std::logic_error("There is no hex!\n");
+        throw std::logic_error("There is no hex!");
     }
     return *(_hex.at(pos));
 }
@@ -47,7 +52,7 @@ Coord Field::coord(Hex & tgt_hex) const
             return it.first;
         }
     }
-    throw std::logic_error("This hex isn't in field!\n");
+    throw std::logic_error("This hex isn't in field!");
 }
 
 bool Field::has_hex(Coord position) const noexcept
@@ -66,7 +71,7 @@ size_t Field::num_hexes() const noexcept
 Hex &Field::hex(size_t i) const
 {
     if (i + 1 > num_hexes()) {
-        throw std::out_of_range("This player haven't enought hex!\n");
+        throw std::out_of_range("This player haven't enought hex!");
     }
     size_t j = 0;
     for(auto it = _hex.begin(); it !=_hex.end(); it++) {
@@ -75,16 +80,16 @@ Hex &Field::hex(size_t i) const
         }
         j++;
     }
-    throw std::out_of_range("This player haven't enought hex!\n");
+    throw std::out_of_range("This player haven't enought hex!");
 }
 
 void Field::link_road(Road &new_road, Coord position, RoadSide side)
 {
     if(has_road(position, side)) {
-        throw std::logic_error("This position isn't empty!\n");
+        throw std::logic_error("This position isn't empty!");
     }
     if(linked(new_road)) {
-        throw std::logic_error("This road already linked!\n");
+        throw std::logic_error("This road already linked!");
     }
     _road.insert(std::make_pair(std::make_pair(position,side), &new_road));
 }
@@ -92,7 +97,7 @@ void Field::link_road(Road &new_road, Coord position, RoadSide side)
 void Field::unlink_road(Coord position, RoadSide side)
 {
     if(!has_road(position, side)) {
-        throw std::logic_error("This position is empty!\n");
+        throw std::logic_error("This position is empty!");
     }
     _road.erase(_road.find(std::make_pair(position, side)));
 }
@@ -105,7 +110,7 @@ void Field::unlink_road(Road &road)
             return;
         }
     }
-    throw std::logic_error("This road isn't exist!\n");
+    throw std::logic_error("This road isn't exist!");
 }
 
 bool Field::has_road(Coord position, RoadSide side) const noexcept
@@ -119,7 +124,7 @@ bool Field::has_road(Coord position, RoadSide side) const noexcept
 Road &Field::road(Coord position, RoadSide side) const
 {
     if (!has_road(position, side)) {
-        throw std::logic_error("This road isn't exist!\n");
+        throw std::logic_error("This road isn't exist!");
     }
     return *(_road.find(std::make_pair(position,side))->second);
 } 
@@ -131,17 +136,17 @@ std::pair<Coord, RoadSide> Field::coord(Road &road) const
             return it.first;
         }
     }
-    throw std::logic_error("This road isn't exist!\n");
+    throw std::logic_error("This road isn't exist!");
 }
 
 
 void Field::link_locality(Locality &new_locality, Coord position, CrossCorner side)
 {
     if(has_locality(position, side)) {
-        throw std::logic_error("This position isn't empty!\n");
+        throw std::logic_error("This position isn't empty!");
     }
     if( linked(new_locality)) {
-        throw std::logic_error("This locality already linked!\n");
+        throw std::logic_error("This locality already linked!");
     }
     _locality.insert(std::make_pair(std::make_pair(position,side), &new_locality));
 }
@@ -149,7 +154,7 @@ void Field::link_locality(Locality &new_locality, Coord position, CrossCorner si
 void Field::unlink_locality(Coord position, CrossCorner side)
 {
     if(!has_locality(position, side)) {
-        throw std::logic_error("This position is empty!\n");
+        throw std::logic_error("This position is empty!");
     }
     _locality.erase(_locality.find(std::make_pair(position, side)));
 }
@@ -162,7 +167,7 @@ void Field::unlink_locality(Locality &locality)
             return;
         }
     }
-    throw std::logic_error("This Locality isn't exist!\n");
+    throw std::logic_error("This Locality isn't exist!");
 }
 
 bool Field::has_locality(Coord position, CrossCorner side) const noexcept
@@ -176,9 +181,9 @@ bool Field::has_locality(Coord position, CrossCorner side) const noexcept
 Locality &Field::locality(Coord position, CrossCorner side) const
 {
     if (!has_locality(position, side)) {
-        throw std::logic_error("This Locality isn't exist!\n");
+        throw std::logic_error("This Locality isn't exist!");
     }
-    return *((Locality *)_locality.find(std::make_pair(position,side))->second);
+    return *(_locality.find(std::make_pair(position,side))->second);
 } 
 
 std::pair<Coord, CrossCorner> Field::coord(Locality &locality) const
@@ -188,7 +193,7 @@ std::pair<Coord, CrossCorner> Field::coord(Locality &locality) const
             return it.first;
         }
     }
-    throw std::logic_error("This Locality isn't exist!\n");
+    throw std::logic_error("This Locality isn't exist!");
 }
 
 void Field::set_robber(Coord position) noexcept

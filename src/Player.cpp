@@ -31,7 +31,7 @@ void Player::remove_road(Road &road)
             return;
         }
     }
-    throw std::logic_error("Player haven't this road!\n");
+    throw std::logic_error("Player haven't this road!");
 }                           //– удаляет объект дороги, если он был создан этим игроком, иначе генерируется исключение std::logic_error с информативным сообщением
 City &Player::add_city(const std::string &name)
 {
@@ -47,7 +47,7 @@ void Player::remove_city(City &city)
             return;
         }
     }
-     throw std::logic_error("Player haven't this city!\n");
+     throw std::logic_error("Player haven't this city!");
 }
                             
 Town &Player::add_town(const std::string &name)
@@ -64,7 +64,7 @@ void Player::remove_town(Town & town)
             return;
         }
     }
-    throw std::logic_error("Player haven't this town!\n");
+    throw std::logic_error("Player haven't this town!");
 }                           //– удаляет объект поселения, если он был создан этим игроком, иначе генерируется исключение std::logic_error с информативным сообщением 
 size_t Player::num_infrastructures() const noexcept
 {
@@ -73,19 +73,19 @@ size_t Player::num_infrastructures() const noexcept
 Infrastructure &Player::infrastructure(size_t i) const
 {
     if (i + 1> num_infrastructures() ) {
-        throw std::out_of_range("This player haven't enought infrastructure!\n");
+        throw std::out_of_range("This player haven't enought infrastructure!");
     }
 	if( i + 1 <= num_cities()) {
-		return *((Infrastructure *)(_cities[i].get()));
+		return *(_cities[i].get());
 	} else {
 		i = i - num_cities();
 	}
 	if( i + 1 <=	 num_towns()) {
-		return *((Infrastructure *)(_towns[i].get()));
+		return *(_towns[i].get());
 	} else {
 		i = i - num_towns();
 	}
-	return *((Infrastructure *)(_roads[i].get()));
+	return *(_roads[i].get());
 }
 
 size_t Player::num_roads() const noexcept
@@ -96,7 +96,7 @@ Road &Player::road(size_t i) const
 {
     if (i + 1 > num_roads()) {
 		
-        throw std::out_of_range("This player haven't enought roads!\n");
+        throw std::out_of_range("This player haven't enought roads!");
     }
     return *_roads[i];
 }                       //– получить дорогу с номером i. i принимает значения от 0 до num_roads()-1. При других значениях i должна возникнуть исключительная ситуация std::out_of_range с непустым информативным сообщением
@@ -108,7 +108,7 @@ size_t Player::num_towns() const noexcept
 Town &Player::town(size_t i) const
 {
     if (i + 1 > num_towns()) {
-        throw std::out_of_range("This player haven't enought towns!\n");
+        throw std::out_of_range("This player haven't enought towns!");
     }
     return *_towns[i];
 }                       //– получить поселение с номером i. i принимает значения от 0 до num_towns()-1. При других значениях i должна возникнуть исключительная ситуация std::out_of_range с непустым информативным сообщением
@@ -120,7 +120,7 @@ City &Player::city(size_t i) const
 {
 	
     if (i + 1 > num_cities()) {
-        throw std::out_of_range("This player haven't enought cities!\n");
+        throw std::out_of_range("This player haven't enought cities!");
     }
     return *_cities[i];
 }                       //– получить город с номером i. i принимает значения от 0 до num_cities()-1. При других значениях i должна возникнуть исключительная ситуация std::out_of_range с непустым информативным сообщением

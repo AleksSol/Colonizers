@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Coord.h"
 #include "RoadSide.h"
 #include "Resource.h"
@@ -11,13 +13,23 @@
 #include "Player.h"
 #include "Field.h"
 #include "Game.h"
-#include <iostream>
+#include "GameStage.h"
+#include "Engine.h"
+#include "GameEngine.h"
+
 using namespace std;
 
 void assert(bool t)
 {
 	if(!t) throw std::logic_error("assertion violation");
 }
+
+void assert_no (bool t)
+{
+	if(t) throw std::logic_error("assertion violation");
+}
+
+/*
 void assert_game(Game &g, size_t n)
 {
 	assert(g.num_players() == n);
@@ -83,54 +95,52 @@ void assert_pl(Player &p, size_t t, size_t c, size_t r)
 	assert_cities(p, c);
 	assert_towns(p,t);
 } 
-
+*/
 int main() {
-	Game my_game;
-	assert_game(my_game, 0);	
-	my_game.add_player("Pl0");
-	assert_game(my_game, 1);
-	my_game.add_player("Pl1");
-	assert_game(my_game, 2);
-	my_game.add_player("Pl3");
-	assert_game(my_game, 3);
 	
+	GameEngine M;
+	M.join_player("1");
+	M.join_player("2");
+	M.join_player("3");
+	M.start_game();
 	
-	Player &my_player = my_game.player(1);
-	//+1 -1
-	assert_pl(my_player, 0,0,0);
-	Road &my_road = my_player.add_road("R1");
-	assert_pl(my_player, 0,0,1);
-	my_player.remove_road(my_road);
-	assert_pl(my_player, 0,0,0);
-	
-	// +2 -2
-	Road &my_second_road = my_player.add_road("R1");
-	my_player.add_road("R1");
-	assert_pl(my_player, 0,0,2);
-	my_player.remove_road(my_second_road);
-	assert_pl(my_player, 0,0,1);
-	my_player.remove_road(my_player.road(0));
-	assert_pl(my_player, 0,0,0);
-	
-	//+3
-	my_player.add_road("R1");
-	my_player.add_road("R1");
-	my_player.add_road("R1");
-	assert_pl(my_player, 0,0,3);
-	
-	City &my_city = my_player.add_city("C");
-	assert_pl(my_player, 0,1,3);
-	my_player.remove_city(my_city);
-	assert_pl(my_player, 0,0,3);
-	my_player.add_city("C");
-	my_player.add_city("C");
-	assert_pl(my_player, 0,2,3);
-	my_player.remove_road(my_player.road(2));
-	assert_pl(my_player, 0,2,2);
-	my_player.remove_road(my_player.road(1));
-	assert_pl(my_player, 0,2,1);
-	my_player.remove_road(my_player.road(0));
-	assert_pl(my_player, 0,2,0);
-	
+	string A = "a";
+	for(int i =0; i < 15; i++) {
+		M.register_road("1", A);
+		M.register_road("2", A);
+		M.register_road("3", A);
+		A = A + "a";
+	}
+	A = "a";
+	for(int i =0; i < 5; i++) {
+		M.register_town("1", A);
+		M.register_town("2", A);
+		M.register_town("3", A);
+		A = A + "a";
+	}
+	A = "a";
+	for(int i =0; i < 4; i++) {
+		M.register_city("1", A);
+		M.register_city("2", A);
+		M.register_city("3", A);
+		A = A + "a";
+	}
+	M.register_city("1", A);
+//Check field
+	/*int t[10];
+	for(int i =0; i<10; i++) t[i] =0;
+	for(size_t it = 0; it < crr_field.num_hexes(); it++) {
+		std::cout << crr_field.coord(crr_field.hex(it)).x() << " " << crr_field.coord(crr_field.hex(it)).y() << " "; 
+		if(crr_field.hex(it).has_resource()) {
+			std::cout << (int)crr_field.hex(it).resource() << " ";
+			t[(int)crr_field.hex(it).resource()]++;
+		}
+		if(crr_field.hex(it).has_number()) {
+			std::cout << (int)crr_field.hex(it).number();
+		}
+		std::cout << std::endl;
+	}
+	for(int i =0; i<6; i++) std::cout << t[i] <<  std::endl;
+	*/
     return 0;
 }

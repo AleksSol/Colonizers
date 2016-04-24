@@ -99,48 +99,97 @@ void assert_pl(Player &p, size_t t, size_t c, size_t r)
 int main() {
 	
 	GameEngine M;
-	M.join_player("1");
-	M.join_player("2");
-	M.join_player("3");
-	M.start_game();
+
+	M.join_player("player_1");
+	M.join_player("player_2");
+	M.join_player("player_3");
+	M.start_game();	
 	
+	/*for(size_t it = 0; it < crr_field.num_hexes(); it++) {
+		std::cout << crr_field.coord(crr_field.hex(it)).x() << " " << crr_field.coord(crr_field.hex(it)).y() << " "; 
+		if(crr_field.hex(it).has_resource()) {
+			std::cout << (int)crr_field.hex(it).resource() << " ";
+		}
+		if(crr_field.hex(it).has_number()) {
+			std::cout << (int)crr_field.hex(it).number();
+		}
+		std::cout << std::endl;
+	}*/
 	string A = "a";
 	for(int i =0; i < 15; i++) {
-		M.register_road("1", A);
-		M.register_road("2", A);
-		M.register_road("3", A);
+		M.register_road("player_1", A);
+		M.register_road("player_2", A);
+		M.register_road("player_3", A);
 		A = A + "a";
 	}
 	A = "a";
 	for(int i =0; i < 5; i++) {
-		M.register_town("1", A);
-		M.register_town("2", A);
-		M.register_town("3", A);
+		M.register_town("player_1", A);
+		M.register_town("player_2", A);
+		M.register_town("player_3", A);
 		A = A + "a";
 	}
 	A = "a";
 	for(int i =0; i < 4; i++) {
-		M.register_city("1", A);
-		M.register_city("2", A);
-		M.register_city("3", A);
+		M.register_city("player_1", A);
+		M.register_city("player_2", A);
+		M.register_city("player_3", A);
 		A = A + "a";
 	}
-	M.register_city("1", A);
-//Check field
-	/*int t[10];
-	for(int i =0; i<10; i++) t[i] =0;
-	for(size_t it = 0; it < crr_field.num_hexes(); it++) {
+	M.put_initial_infrastructure("player_1", "a", Coord(-1,1), CrossCorner::BOTTOM, "a", Coord(-1,1), RoadSide::DOWN);
+
+	M.put_initial_infrastructure("player_2", "a", Coord(1,1), CrossCorner::BOTTOM, "a", Coord(1,1), RoadSide::DOWN);
+
+	M.put_initial_infrastructure("player_3", "a", Coord(1,0), CrossCorner::BOTTOM, "a", Coord(1,0), RoadSide::DOWN);
+
+	M.put_initial_infrastructure("player_3", "aa", Coord(-1,1), CrossCorner::TOP, "aa", Coord(-1,1), RoadSide::UP);
+
+	M.put_initial_infrastructure("player_2", "aa", Coord(-1,3), CrossCorner::BOTTOM, "aa", Coord(-1,2), RoadSide::RIGHT);
+
+	M.put_initial_infrastructure("player_1", "aa", Coord(0,-1), CrossCorner::BOTTOM, "aa", Coord(0,-2), RoadSide::UP);
+
+	M.make_dice("player_1", 2);
+		
+		
+		
+	/*for(size_t it = 0; it < crr_field.num_hexes(); it++) {
 		std::cout << crr_field.coord(crr_field.hex(it)).x() << " " << crr_field.coord(crr_field.hex(it)).y() << " "; 
 		if(crr_field.hex(it).has_resource()) {
-			std::cout << (int)crr_field.hex(it).resource() << " ";
-			t[(int)crr_field.hex(it).resource()]++;
+			if(crr_field.hex(it).resource() == Resource::GRAIN) { 
+				std::cout << "GRAIN ";
+			} else if(crr_field.hex(it).resource() == Resource::CLAY) { 
+				std::cout << "CLAY ";
+			} else if(crr_field.hex(it).resource() == Resource::ORE) { 
+				std::cout << "ORE ";
+			} else if(crr_field.hex(it).resource() == Resource::WOOD) { 
+				std::cout << "WOOD ";
+			} else if(crr_field.hex(it).resource() == Resource::WOOL) { 
+				std::cout << "WOOL ";
+			}
+			
 		}
 		if(crr_field.hex(it).has_number()) {
 			std::cout << (int)crr_field.hex(it).number();
 		}
 		std::cout << std::endl;
 	}
-	for(int i =0; i<6; i++) std::cout << t[i] <<  std::endl;
-	*/
+		
+		
+		ResourcesHolder * h;
+		for(size_t i = 0; i < _players.size(); i++) {
+			h = & player_by_name(_players[i])->bank();
+			std::cout <<_players[i] << " ";
+			std::cout << "GRAIN - " << h->resources(Resource::GRAIN) << " ";
+			std::cout << "CLAY - " <<h->resources(Resource::CLAY) << " ";
+			std::cout << "ORE - " << h->resources(Resource::ORE) << " ";
+			std::cout << "WOOD - " << h->resources(Resource::WOOD) << " ";
+			std::cout << "WOOL - " << h->resources(Resource::WOOL) << " ";
+			std::cout << std:: endl;
+		}*/
+//Check field
+	//int t[10];
+	
+	//for(int i =0; i<6; i++) std::cout << t[i] <<  std::endl;
+	
     return 0;
 }

@@ -1,5 +1,10 @@
 #include "EngineStartStage.h"
 
+EngineStartStage::EngineStartStage()
+{
+	first_line = true;
+}
+
 EngineStartStage::~EngineStartStage()
 {
 }
